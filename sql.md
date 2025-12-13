@@ -138,7 +138,7 @@ FROM EmploySalary;
 
 | AverageSalary |
 |---------------|
-| 72714.29 |
+| 73000 |
 
 ---
 
@@ -178,8 +178,8 @@ ORDER BY TotalSalary DESC;
 
 | EmpId | TotalSalary |
 |-------|-------------|
-| 1 | 151000 |
 | 2 | 208000 |
+| 1 | 151000 |
 | 4 | 80000 |
 | 3 | 72000 |
 
