@@ -818,12 +818,28 @@ GROUP BY e.ManagerId;
 
 ---
 
-#### Q42: Calculate average salary for employees joined in each year
+#### Q42: Calculate the average salary for employees who joined in each year
 ```sql
 SELECT YEAR(e.DateOfJoining) AS JoiningYear, AVG(s.Salary) AS AverageSalary
 FROM EmployDetails e
 INNER JOIN EmploySalary s ON e.EmpId = s.EmpId
 GROUP BY YEAR(e.DateOfJoining);
+```
+**Alternative: if sqlite SQLITE_ERROR: sqlite3 result code 1: near "YEAR": syntax error shown"**
+```sql
+SELECT strftime('%Y', e.DateOfJoining) AS JoiningYear,
+AVG(s.Salary) AS AverageSalary
+FROM EmployDetails e
+INNER JOIN EmploySalary s ON e.EmpId = s.EmpId
+GROUP BY strftime('%Y', e.DateOfJoining);
+```
+**OR**
+```sql
+SELECT e.DateOfJoining AS JoiningYear,
+AVG(s.Salary) AS AverageSalary
+FROM EmployDetails e
+INNER JOIN EmploySalary s ON e.EmpId = s.EmpId
+GROUP BY e.DateOfJoining;
 ```
 **Result:**
 | JoiningYear | AverageSalary |
